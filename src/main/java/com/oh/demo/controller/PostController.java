@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oh.demo.model.Post;
@@ -25,6 +26,11 @@ public class PostController {
   @GetMapping("/list")
   public List<Post> postList() {
     return postService.postList();
+  }
+
+  @GetMapping("/search")
+  public List<Post> postTitle(@RequestParam("title") String title) {
+    return postService.postTitle(title);
   }
 
   @GetMapping("/{postId}")
