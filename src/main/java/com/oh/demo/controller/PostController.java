@@ -2,6 +2,7 @@ package com.oh.demo.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,23 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oh.demo.model.Post;
+import com.oh.demo.service.PostService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/posts")
+@RequiredArgsConstructor
 public class PostController {
 
+  private final PostService postService;
+
+  
   @GetMapping("/list")
   public List<Post> postList() {
-    return List.of(
-      new Post("1", "title1", "content1", "", LocalDateTime.now()),
-      new Post("2", "title2", "content2", "", LocalDateTime.now()),
-      new Post("3", "title3", "content3", "", LocalDateTime.now())
-    );
+    return postService.postList();
   }
 
   @GetMapping("/{postId}")
   public Post postDetail(@PathVariable String postId) {
-    return new Post(postId, "title2", "content3", "", LocalDateTime.now());
+    return new Post(UUID.randomUUID(), "title2", "content3", "", LocalDateTime.now());
 
   }
   
