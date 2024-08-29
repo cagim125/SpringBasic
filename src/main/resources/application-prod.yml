@@ -1,18 +1,13 @@
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
   datasource:
-    url: jdbc:h2:~/test;
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: 
+    url: jdbc:postgresql://localhost/postgres
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
-      hivernate:
-        dialect: org.hibernate.dialect.H2Dialect
+      hibernate:
         show-sql: true
         format-sql: true
     hibernate:
