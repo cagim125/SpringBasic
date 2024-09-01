@@ -6,9 +6,18 @@ spring:
     password: 12345
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
     properties:
       hibernate:
-        show-sql: true
         format-sql: true
     hibernate:
       ddl-auto: create-drop
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/mariadb/**/**.xml
+  # type-handlers-package: com.oh.demo.mapper.typehandler
+  type-aliases-package: com.oh.demo.model
+  configuration:
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 30
+    default-fetch-size: 100
