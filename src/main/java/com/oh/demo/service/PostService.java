@@ -17,8 +17,8 @@ public class PostService {
   private final PostMapper postMapper;
 
   public List<Post> postList() {
-    return postRepository.findAll();
-    // return postMapper.listPost();
+    // return postRepository.findAll();
+    return postMapper.listPost();
   }
 
   public List<Post> postTitle(String title) {
